@@ -1,0 +1,5 @@
+pimcore5_deployment:
+    resource: "@Pimcore5DeploymentBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
