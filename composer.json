@@ -13,13 +13,13 @@
   ],
   "autoload": {
     "psr-4": {
-      "Pimcore5DeploymentBundle\\": "/"
+      "Pimcore5\\DeploymentBundle\\": "/"
     }
   },
   "extra": {
     "pimcore": {
       "bundles": [
-        "Pimcore5\\DeploymentBundle"
+        "Pimcore5\\DeploymentBundle\\Pimcore5DeploymentBundle"
       ]
     }
   }
