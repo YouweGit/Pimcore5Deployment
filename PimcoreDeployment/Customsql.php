@@ -7,7 +7,7 @@ class Customsql extends DAbstract
     /**
      * @var string
      */
-    private $backupPath = PIMCORE_PRIVATE_VAR . '/plugins/PimcoreDeployment/customsql/';
+    private $backupPath = PIMCORE_PRIVATE_VAR . '/bundles/PimcoreDeployment/customsql/';
     /**
      * @var string
      */

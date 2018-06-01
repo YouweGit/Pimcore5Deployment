@@ -9,8 +9,8 @@ class Content extends \PimcoreDeployment\DAbstract
     /**
      * @var string
      */
-    private $backupPath = PIMCORE_PRIVATE_VAR . '/plugins/PimcoreDeployment/migration/content/';
-    private $backupTmpPath = PIMCORE_PRIVATE_VAR . '/plugins/PimcoreDeployment/migration/content/tmp/';
+    private $backupPath = PIMCORE_PRIVATE_VAR . '/bundles/PimcoreDeployment/migration/content/';
+    private $backupTmpPath = PIMCORE_PRIVATE_VAR . '/bundles/PimcoreDeployment/migration/content/tmp/';
     /**
      * @var string
      */

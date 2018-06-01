@@ -16,7 +16,7 @@ class FieldCollection {
      * FieldCollection constructor.
      */
     public function __construct() {
-        $this->path = PIMCORE_PRIVATE_VAR . '/plugins/PimcoreDeployment/migration/field-collections/';
+        $this->path = PIMCORE_PRIVATE_VAR . '/bundles/PimcoreDeployment/migration/field-collections/';
     }
 
     /**

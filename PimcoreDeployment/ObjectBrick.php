@@ -21,7 +21,7 @@ class ObjectBrick {
      * ObjectBrick constructor.
      */
     public function __construct() {
-        $this->path = PIMCORE_PRIVATE_VAR . '/plugins/PimcoreDeployment/migration/objectBricks/';
+        $this->path = PIMCORE_PRIVATE_VAR . '/bundles/PimcoreDeployment/migration/objectBricks/';
     }
 
     /**

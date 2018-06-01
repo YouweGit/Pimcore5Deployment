@@ -7,8 +7,8 @@ class Migration extends DAbstract
     /**
      * @var string
      */
-    private $backupPath = PIMCORE_PRIVATE_VAR . '/plugins/PimcoreDeployment/migration/';
-    private $backupPathDumpComplete = PIMCORE_PRIVATE_VAR . '/plugins/PimcoreDeployment/dumps/';
+    private $backupPath = PIMCORE_PRIVATE_VAR . '/bundles/PimcoreDeployment/migration/';
+    private $backupPathDumpComplete = PIMCORE_PRIVATE_VAR . '/bundles/PimcoreDeployment/dumps/';
     /**
      * @var string
      */

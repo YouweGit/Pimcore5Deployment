@@ -18,7 +18,7 @@ class CustomLayout
     public function __construct()
     {
         $this->db = \Pimcore\Db::get();
-        $this->path = PIMCORE_PRIVATE_VAR . '/plugins/PimcoreDeployment/migration/custom_layouts/';
+        $this->path = PIMCORE_PRIVATE_VAR . '/bundles/PimcoreDeployment/migration/custom_layouts/';
     }
 
     /**
