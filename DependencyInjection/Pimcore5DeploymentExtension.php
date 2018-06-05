@@ -20,21 +20,11 @@ class Pimcore5DeploymentExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-//        var_dump($configs);
-//        die('configload');
-
-
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
-
-
-//        var_dump($config);
-//        die('cL2');
-//        echo 'BEFORE';
-
-        Config::set($config);
-//        echo 'AFTER';
-
+        foreach($config as $key => $value) {
+            $container->setParameter($key, $value);
+        }
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }
