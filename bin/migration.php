@@ -3,6 +3,7 @@
 require_once __DIR__ . '/bootstrap.php';
 use Pimcore\Cache;
 use \Pimcore\Model\Version;
+
 //if(\Pimcore\Version::getRevision() <= 3543) {   // only pimcore 3
 //    Zend_Session::start();
 //}
@@ -197,13 +198,13 @@ $plugin = "Pimcore5\\DeploymentBundle\\Pimcore5DeploymentBundle";
 
 echo "\naction: " . $opts->action . "\n";
 
-$def        = new \PimcoreDeployment\Definition();
-$customsql  = new \PimcoreDeployment\Customsql();
-$mig        = new \PimcoreDeployment\Migration();
+$def        = new \Pimcore5\DeploymentBundle\PimcoreDeployment\Definition();
+$customsql  = new \Pimcore5\DeploymentBundle\PimcoreDeployment\Customsql();
+$mig        = new \Pimcore5\DeploymentBundle\PimcoreDeployment\Migration();
 //$con        = new \PimcoreDeployment\Content();
-$cl         = new \PimcoreDeployment\CustomLayout();
-$fc         = new \PimcoreDeployment\FieldCollection();
-$ob         = new \PimcoreDeployment\ObjectBrick();
+$cl         = new \Pimcore5\DeploymentBundle\PimcoreDeployment\CustomLayout();
+$fc         = new \Pimcore5\DeploymentBundle\PimcoreDeployment\FieldCollection();
+$ob         = new \Pimcore5\DeploymentBundle\PimcoreDeployment\ObjectBrick();
 
 switch ($opts->action) {
     case 'clear-classes':

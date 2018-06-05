@@ -1,6 +1,6 @@
 <?php
 
-namespace PimcoreDeployment;
+namespace Pimcore5\DeploymentBundle\PimcoreDeployment;
 
 use Pimcore\Model\Object\Fieldcollection as FieldCollectionObject;
 use Pimcore\File;

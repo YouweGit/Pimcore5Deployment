@@ -1,6 +1,6 @@
 <?php
 
-namespace PimcoreDeployment;
+namespace Pimcore5\DeploymentBundle\PimcoreDeployment;
 
 use Pimcore\API\Plugin as PluginLib;
 use Pimcore\Model\Object\ClassDefinition;

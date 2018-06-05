@@ -1,6 +1,6 @@
 <?php
 
-namespace PimcoreDeployment;
+namespace Pimcore5\DeploymentBundle\PimcoreDeployment;
 
 class Migration extends DAbstract
 {
