@@ -28,7 +28,7 @@ class ClitestCommand extends AbstractCommand
         // only dump in verbose mode
         $this->dumpVerbose("Dump verbose", Dumper::NEWLINE_BEFORE);
 
-        echo ' == Config test: == ' . Config::get('url') . ' == ';
+        echo ' == Config test: == ' . $this->getContainer()->getParameter('bullshit'). ' == ';
 
 
     }
