@@ -1,2 +1,5 @@
 pimcore5_deployment:
     url: testing
+#    staticDataTables:
+#      - test1
+#      - test2

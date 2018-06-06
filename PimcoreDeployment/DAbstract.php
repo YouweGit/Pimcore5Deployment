@@ -21,7 +21,7 @@ abstract class DAbstract {
     public function __construct()
     {
 //        $this->config = \PimcoreDeployment\Plugin::getConfig();
-        $this->config = Config::get();
+        $this->config = \Pimcore::getContainer()->getParameter('pimcore5_deployment');
 
         $this->adapter = \Pimcore\Db::get();
 

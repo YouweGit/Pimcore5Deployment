@@ -37,7 +37,8 @@ class Migration extends DAbstract
     public function __construct()
     {
         parent::__construct();
-        $this->staticDataTables = $this->config->staticDataTables->table ? is_string($this->config->staticDataTables->table) ? array($this->config->staticDataTables->table) : $this->config->staticDataTables->table->toArray() : array();
+        $this->staticDataTables = array_unique($this->config['staticDataTables']);
+
 
         \Pimcore\File::mkdir($this->backupPath);
     }

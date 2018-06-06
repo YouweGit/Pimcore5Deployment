@@ -22,6 +22,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
             ->scalarNode('url')->end()
+            ->arrayNode('staticDataTables')->scalarPrototype()->end()->end()
             ->end();
 
         // Here you should define the parameters that are allowed to
