@@ -28,7 +28,7 @@ class ClitestCommand extends AbstractCommand
         // only dump in verbose mode
         $this->dumpVerbose("Dump verbose", Dumper::NEWLINE_BEFORE);
 
-        echo ' == Config test: == ' . $this->getContainer()->getParameter('bullshit'). ' == ';
+        echo ' == Config test: == ' . var_export($this->getContainer()->getParameter('pimcore5_deployment'),1). ' == ';
 
 
     }

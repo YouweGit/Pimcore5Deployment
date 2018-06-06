@@ -17,7 +17,8 @@ require_once __DIR__ . '/bootstrap.php';
 //}
 //
 
+echo ' == CFG == ' . var_export(\Pimcore::getContainer()->getParameter('pimcore5_deployment'),1) . ' == ';
 
-echo ' == Config test: == ' . Config::get('url') . ' == ';
+//echo ' == Config test: == ' . Config::get('url') . ' == ';
 
 

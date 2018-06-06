@@ -6,6 +6,8 @@ use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
 
 class Pimcore5DeploymentBundle extends AbstractPimcoreBundle
 {
+
+
     public function getJsPaths()
     {
         return [
