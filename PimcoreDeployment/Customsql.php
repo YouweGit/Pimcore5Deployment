@@ -12,14 +12,10 @@ class Customsql extends DAbstract
      * @var string
      */
     private $dumpFileNamePattern = '*.sql';
-    /**
-     * @var Zend_Config
-     */
     public $config;
 
     public function __construct()
     {
-//        die('construct function of custo/**/msql migration library');
         parent::__construct();
 
         \Pimcore\File::mkdir($this->backupPath);

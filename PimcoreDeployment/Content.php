@@ -1,5 +1,7 @@
 <?php
 
+// NOT upgraded to pimcore 5 --- and not finished!!
+
 namespace PimcoreDeployment;
 
 use Pimcore\Model\Object\DeploymentDataMigration;

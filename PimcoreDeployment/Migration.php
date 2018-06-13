@@ -83,12 +83,7 @@ class Migration extends DAbstract
         $h = $cnf->database->params->host;
         $file = $this->backupPath . $this->migrationSqlFile;
 
-//        \Kint::$max_depth=3;
-//        d($this->adapter);
-
-//        $mysqlVersion = $this->adapter->getServerVersion();
         $purged = '';
-//        if (version_compare($mysqlVersion, '5.6.0', '>=')) {
         if (true) {
             $purged = '--set-gtid-purged=OFF';
         }
@@ -153,9 +148,9 @@ class Migration extends DAbstract
         $tables = '';
 
         // ----- from the original script (might be useful) -------
-        //export LC_CTYPE=C
-        //export LANG=C
-        //mysqldump -h${DB_LOCAL_HOST}  -u ${DB_LOCAL_USER} -p${DB_LOCAL_PASSWORD} ${DB_LOCAL_NAME} | sed '/\*\!50013 DEFINER/d' > ${CURRENT_PATH}/dump.sql
+        // export LC_CTYPE=C
+        // export LANG=C
+        // mysqldump -h${DB_LOCAL_HOST}  -u ${DB_LOCAL_USER} -p${DB_LOCAL_PASSWORD} ${DB_LOCAL_NAME} | sed '/\*\!50013 DEFINER/d' > ${CURRENT_PATH}/dump.sql
         // --------------------------------------------------------
 
         $command = "mysqldump $purged --add-drop-table -u$u -p$p -h$h $db $tables | sed -e '/DEFINER/d' > $file";

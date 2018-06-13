@@ -6,13 +6,11 @@ use Exception;
 use Pimcore\File;
 use Pimcore\Model\Object;
 use Pimcore\Model\Object\ClassDefinition\CustomLayout as PimcoreCustomLayout;
-//use Zend_Json_Exception;
 
 class CustomLayout
 {
     /** @var string */
     public $path;
-    /** @var mixed|\Zend_Db_Adapter_Abstract */
     private $db;
 
     public function __construct()
@@ -55,8 +53,6 @@ class CustomLayout
             $customLayout->userModification,
             $customLayout->fieldDefinitions
         );
-//        $json = \Zend_Json::encode($customLayout);
-//        $json = \Zend_Json::prettyPrint($json);
         $json = json_encode($customLayout, JSON_PRETTY_PRINT);
 
         return $json;
@@ -84,7 +80,6 @@ class CustomLayout
     public function save($filename)
     {
         $json = file_get_contents($filename);
-//        $importData = \Zend_Json::decode($json);
         $importData = json_decode($json, true);
 
         // Safe to do an insert with id as long as custom_layouts is truncated at import()

@@ -14,11 +14,6 @@ class Config
     }
 
     public static function set($config) {
-
-//        echo "SETTING CONFIG";
-//        var_dump($config);
-//        die('CONFIG SETTTT');
-
         self::$config = $config;
     }
 

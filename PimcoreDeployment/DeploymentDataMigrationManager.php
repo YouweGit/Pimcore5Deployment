@@ -6,12 +6,8 @@ use Pimcore\Model\Object\DeploymentDataMigration;
 
 class DeploymentDataMigrationManager {
 
-//    public $path;
-//    private $db;
-
     function __construct() {
         $this->db = \Pimcore\Db::get();
-//        $this->path = PIMCORE_WEBSITE_PATH . '/var/deployment/migration/classes/';
     }
 
     public static function DDMtoArray($mig)
@@ -72,8 +68,6 @@ class DeploymentDataMigrationManager {
     {
         $mode = 'default';
         $deployment_data_object = self::retrieveObjectByCnameAndId($cname, $cid, $cid2, $cid3);
-//        var_dump($deployment_data_object);
-//        die();
 
         if(!$deployment_data_object) {
 
@@ -163,7 +157,6 @@ class DeploymentDataMigrationManager {
         }
 
         if ($sql) {
-//            echo "\n" . $sql . "\n";
             $data = $this->db->fetchRow($sql);
         }
         return $data;

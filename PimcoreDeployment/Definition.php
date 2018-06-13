@@ -21,21 +21,15 @@ class Definition {
      */
     public function export($classes = false) {
 
-//        echo ' == Config test: == ' . Config::get('url') . ' == ';
-//        die('asdfasdfasdfasdfasdf export function called');
-
         \Pimcore\File::setDefaultMode(0755);
 
         if (!is_dir($this->path)) {
             \Pimcore\File::mkdir($this->path);
         }
 
-
         $list = new ClassDefinition\Listing;
         foreach ($list->load() as $class) {
-//            echo "class: " . var_export($class,1) . "\n";
             echo "class: " . $class->getName() . "\n";
-//            die('asdf');
             // check if class needs to be skipped ($classes)
             if ($classes && !in_array($class->getName(), $classes)) continue;
 
@@ -62,9 +56,6 @@ class Definition {
             $data->userModification
         );
         $data->propertyVisibility = $class->propertyVisibility;
-//        $json = \Zend_Json::encode($data);
-//        $json = \Zend_Json::prettyPrint($json);
-//
         $json = json_encode($data, JSON_PRETTY_PRINT);
         return $json;
     }
@@ -174,13 +165,11 @@ class Definition {
 
             echo 'Found: ' . str_replace(PIMCORE_PRIVATE_VAR, '', $filename) . ' (' . filesize($filename) . " bytes)\n";
             $data = json_decode(file_get_contents($filename));
-            //var_dump($data);
             echo 'id [' . $data->id . '] name [' . $data->name . "]\n";
             $id_array[$data->id][] = $data->name;
         }
 
         ksort($id_array);
-//        print_r($id_array);
         foreach ($id_array as $classId => $idsArray) {
             if (count($idsArray) > 1) {
                 echo 'WARNING! OVERLAPPING IDS: ';
@@ -198,7 +187,6 @@ class Definition {
      */
     public function save($filename) {
         $json = file_get_contents($filename);
-//        $importData = \Zend_Json::decode($json);
         $importData = json_decode($json, true);
         $id = $this->db->quote($importData['id']);
         $name = $this->db->quote($importData['name']);

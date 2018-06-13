@@ -4,14 +4,6 @@ require_once __DIR__ . '/bootstrap.php';
 use Pimcore\Cache;
 use \Pimcore\Model\Version;
 
-//if(\Pimcore\Version::getRevision() <= 3543) {   // only pimcore 3
-//    Zend_Session::start();
-//}
-
-//if(\Pimcore\Version::getRevision() < 3932){ // less then pimcore 4.3.0
-//    throw new \Exception('Pimcore version not supported. Please downgrade Deployment plugin to 0.2.*');
-//}
-
 //this is optional, memory limit could be increased further (pimcore default is 1024M)
 ini_set('memory_limit', '1024M');
 ini_set("max_execution_time", "-1");
@@ -43,9 +35,6 @@ $actionen = [
     'import-bricks',
 ];
 
-//var_dump($argc);
-//var_dump($argv);
-
 $argvcopy = $argv;
 array_shift($argvcopy);
 $key = false;
@@ -57,23 +46,13 @@ foreach($argvcopy  as $av) {
         $p[$keyName] = $av;
     }
 }
-//var_dump($p);
 $opts = new stdClass();
 $opts->action = @$p['-a'];
 $opts->classes = @$p['-c'];
 $opts->classids = @$p['-i'];
 
-//die();
-
 
 try {
-//    $opts = new Zend_Console_Getopt(array(
-//        'action|a=s' => '',
-//        'classes|c-s' => '',
-//        'classids|i-s' => '',
-//        'ignore-maintenance-mode' => 'forces the script execution even when the maintenance mode is activated',
-//    ));
-//    $opts->parse();
 
     if (!isset($opts->action) || !in_array($opts->action, $actionen)) {
         throw new Exception(
@@ -113,95 +92,48 @@ try {
     exit(1);
 }
 
-//echo "Action:  " . $opts->action . "\n";
-//echo "Classes: " . var_export($opts->classes,1) . "\n";
-
 $classes = ( ($opts->classes !== true && $opts->classes !== NULL) ? explode(',', $opts->classes) : false );
 $classids = ( ($opts->classids !== true && $opts->classids !== NULL) ? explode(',', $opts->classids) : false );
-
-//echo "Classes: " . var_export($classes,1) . "\n";
 
 Version::disable();
 Cache::disable();
 
-
-//$bundle_name = "Bla\\Blabla\\BlablaBundle";\
-//\Pimcore\ExtensionManager::enable('plugin', $bundle_name);
-
-//$plugin = 'Pimcore5Deployment';
 $plugin = "Pimcore5\\DeploymentBundle\\Pimcore5DeploymentBundle";
 
+$state = [];
+$bm = \Pimcore::getContainer()->get('pimcore.extension.bundle_manager');
+$bundleClass = $plugin;
 
-        //$state = $this->resolveState($input);
-        $state = [];
-//        $state['priority'] = 0;
-//        $state['enabled'] = true;
+/* @var \Pimcore\Extension\Bundle\PimcoreBundleManager $bm */
 
-        //     $this->getContainer()->get('pimcore.extension.bundle_manager');
+if(!$bm->isEnabled($bundleClass)) {
 
-        $bm = \Pimcore::getContainer()->get('pimcore.extension.bundle_manager');
+    echo "\nEnabling plugin on the fly.\n";
 
-//        $bm = $this->getBundleManager();
+    try {
+        $bm->enable($bundleClass, $state);
 
-//        $bundleClass = $this->normalizeBundleIdentifier($input->getArgument('bundle-class'));
-        $bundleClass = $plugin;
+        echo "\nPLUGIN ENABLED\n";
 
-//        $mapping = $this->getAvailableBundleShortNameMapping($bm);
-//        if (isset($mapping[$bundleClass])) {
-//            $bundleClass = $mapping[$bundleClass];
-//        }
+        $command = 'php ' . implode(' ', $argv);
+        echo "\nRe-executing command: [ $command ] \n";
+        echo shell_exec($command);
+        die();
 
-        /* @var \Pimcore\Extension\Bundle\PimcoreBundleManager $bm */
+    } catch (\Exception $e) {
+        echo "\nERROR: COULD NOT ENABLE PLUGIN\n";
 
-        if(!$bm->isEnabled($bundleClass)) {
+        return;
+    }
 
-            echo "\nEnabling plugin on the fly.\n";
-
-            try {
-                $bm->enable($bundleClass, $state);
-
-                echo "\nPLUGIN ENABLED\n";
-
-                $command = 'php ' . implode(' ', $argv);
-                echo "\nRe-executing command: [ $command ] \n";
-                echo shell_exec($command);
-                die();
-
-//            $this->io->success(sprintf('Bundle "%s" was successfully enabled', $bundleClass));
-            } catch (\Exception $e) {
-//            $this->handlePrerequisiteError($e->getMessage());
-                echo "\nERROR: COULD NOT ENABLE PLUGIN\n";
-
-                return;
-            }
-
-
-        }
-
-
-//        $this->postStateChangeHelper->runPostStateChangeCommands(
-//            $this->io,
-//            $this->getApplication()->getKernel()->getEnvironment()
-//        );
-
-
-//if (!\Pimcore\ExtensionManager::isEnabled('bundle', $plugin)) {
-//    echo "\nEnabling plugin on the fly.\n";
-//    \Pimcore\ExtensionManager::enable('bundle', $plugin);
-//    $command = 'php ' . implode(' ', $argv);
-//    echo "\nRe-executing command: [ $command ] \n";
-//    echo shell_exec($command);
-//    die();
-//}
-
-//die('asdfasdf');
+}
 
 echo "\naction: " . $opts->action . "\n";
 
 $def        = new \Pimcore5\DeploymentBundle\PimcoreDeployment\Definition();
 $customsql  = new \Pimcore5\DeploymentBundle\PimcoreDeployment\Customsql();
 $mig        = new \Pimcore5\DeploymentBundle\PimcoreDeployment\Migration();
-//$con        = new \PimcoreDeployment\Content();
+//$con        = new \Pimcore5\DeploymentBundle\PimcoreDeployment\Content();
 $cl         = new \Pimcore5\DeploymentBundle\PimcoreDeployment\CustomLayout();
 $fc         = new \Pimcore5\DeploymentBundle\PimcoreDeployment\FieldCollection();
 $ob         = new \Pimcore5\DeploymentBundle\PimcoreDeployment\ObjectBrick();

@@ -21,7 +21,6 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('pimcore5_deployment');
         $rootNode
             ->children()
-            ->scalarNode('url')->end()
             ->arrayNode('staticDataTables')->scalarPrototype()->end()->end()
             ->end();
 

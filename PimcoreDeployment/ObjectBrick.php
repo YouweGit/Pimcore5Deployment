@@ -57,8 +57,6 @@ class ObjectBrick {
      * @return string
      */
     public function generateObjectBrickDefinitionJson($class) {
-//        $json = Zend_Json::encode($this->map($class));
-//        $json = Zend_Json::prettyPrint($json);
         $json = json_encode($class, JSON_PRETTY_PRINT);
 
         return $json;
@@ -80,7 +78,6 @@ class ObjectBrick {
      */
     private function save($filename) {
         $json = file_get_contents($filename);
-//        $importData = Zend_Json::decode($json);
         $importData = json_decode($json, true);
         $object_brick = new ObjectBrickObject\Definition();
         $object_brick->setKey($importData['key']);

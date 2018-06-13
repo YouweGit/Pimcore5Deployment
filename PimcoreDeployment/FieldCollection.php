@@ -52,8 +52,6 @@ class FieldCollection {
      * @return string
      */
     public function generateFieldCollectionDefinitionJson($class) {
-//        $json = Zend_Json::encode($this->map($class));
-//        $json = Zend_Json::prettyPrint($json);
 
         $json = json_encode($class, JSON_PRETTY_PRINT);
 
@@ -76,7 +74,6 @@ class FieldCollection {
      */
     private function save($filename) {
         $json = file_get_contents($filename);
-//        $importData = Zend_Json::decode($json);
         $importData = json_decode($json, true);
         $fieldCollection = new FieldCollectionObject\Definition();
         $fieldCollection->setKey($importData['key']);
