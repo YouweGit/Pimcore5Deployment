@@ -4,8 +4,8 @@ namespace Pimcore5\DeploymentBundle\PimcoreDeployment;
 
 use Exception;
 use Pimcore\File;
-use Pimcore\Model\Object;
-use Pimcore\Model\Object\ClassDefinition\CustomLayout as PimcoreCustomLayout;
+use Pimcore\Model\DataObject;
+use Pimcore\Model\DataObject\ClassDefinition\CustomLayout as PimcoreCustomLayout;
 
 class CustomLayout
 {
@@ -93,7 +93,7 @@ class CustomLayout
         ]);
 
         $customLayout = PimcoreCustomLayout::getById($importData['id']);
-        $layout = Object\ClassDefinition\Service::generateLayoutTreeFromArray($importData['layoutDefinitions'], true);
+        $layout = DataObject\ClassDefinition\Service::generateLayoutTreeFromArray($importData['layoutDefinitions'], true);
         $customLayout->setLayoutDefinitions($layout);
         $customLayout->save();
     }

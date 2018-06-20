@@ -2,7 +2,7 @@
 
 namespace PimcoreDeployment;
 
-use Pimcore\Model\Object\DeploymentDataMigration;
+use Pimcore\Model\DataObject\DeploymentDataMigration;
 
 class DeploymentDataMigrationManager {
 
@@ -43,7 +43,7 @@ class DeploymentDataMigrationManager {
         if(!$deployment_data_object) {
 
             // Create a new object (all related object migration keys will be created by the CLI)
-            $new_object = \Pimcore\Model\Object\Service::createFolderByPath('/deployment/datamigration');
+            $new_object = \Pimcore\Model\DataObject\Service::createFolderByPath('/deployment/datamigration');
             $parent_id_of_new_object = $new_object->getId();
 
             $deployment_data_object = new DeploymentDataMigration();
@@ -72,7 +72,7 @@ class DeploymentDataMigrationManager {
         if(!$deployment_data_object) {
 
             // Create a new object (all related object migration keys will be created by the CLI)
-            $new_object = \Pimcore\Model\Object\Service::createFolderByPath('/deployment/datamigration');
+            $new_object = \Pimcore\Model\DataObject\Service::createFolderByPath('/deployment/datamigration');
             $parent_id_of_new_object = $new_object->getId();
 
             $deployment_data_object = new DeploymentDataMigration();

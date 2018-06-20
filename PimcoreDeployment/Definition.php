@@ -3,7 +3,7 @@
 namespace Pimcore5\DeploymentBundle\PimcoreDeployment;
 
 use Exception;
-use Pimcore\Model\Object\ClassDefinition;
+use Pimcore\Model\DataObject\ClassDefinition;
 use Pimcore5\DeploymentBundle\Config\Config;
 
 class Definition {

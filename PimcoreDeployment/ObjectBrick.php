@@ -4,9 +4,9 @@ namespace Pimcore5\DeploymentBundle\PimcoreDeployment;
 
 use Exception;
 use Pimcore\File;
-use Pimcore\Model\Object\Objectbrick as ObjectBrickObject;
+use Pimcore\Model\DataObject\Objectbrick as ObjectBrickObject;
 //use Zend_Json;
-use Pimcore\Model\Object\ClassDefinition\Service;
+use Pimcore\Model\DataObject\ClassDefinition\Service;
 
 /**
  * Class ObjectBrick

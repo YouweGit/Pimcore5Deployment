@@ -2,10 +2,10 @@
 
 namespace Pimcore5\DeploymentBundle\PimcoreDeployment;
 
-use Pimcore\Model\Object\Fieldcollection as FieldCollectionObject;
+use Pimcore\Model\DataObject\Fieldcollection as FieldCollectionObject;
 use Pimcore\File;
 //use Zend_Json;
-use Pimcore\Model\Object\ClassDefinition\Service;
+use Pimcore\Model\DataObject\ClassDefinition\Service;
 
 class FieldCollection {
 

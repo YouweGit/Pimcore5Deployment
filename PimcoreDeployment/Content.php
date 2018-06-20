@@ -4,7 +4,7 @@
 
 namespace PimcoreDeployment;
 
-use Pimcore\Model\Object\DeploymentDataMigration;
+use Pimcore\Model\DataObject\DeploymentDataMigration;
 
 class Content extends \PimcoreDeployment\DAbstract
 {
