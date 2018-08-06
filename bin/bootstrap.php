@@ -12,7 +12,8 @@
  * @license    http://www.pimcore.org/license     GPLv3 and PEL
  */
 
-require (__DIR__ . '/../../../../pimcore/lib/Pimcore/Bootstrap.php');
+require (__DIR__ . '/../../../../vendor/pimcore/pimcore/lib/Bootstrap.php');
+// /data/projects/kh-pimcore/vendor/pimcore/pimcore/lib/Bootstrap.php
 
 $kernel = \Pimcore\Bootstrap::startupCli();
 
