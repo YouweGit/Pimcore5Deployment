@@ -12,9 +12,19 @@
  * @license    http://www.pimcore.org/license     GPLv3 and PEL
  */
 
-require (__DIR__ . '/../../../../vendor/pimcore/pimcore/lib/Bootstrap.php');
-// /data/projects/kh-pimcore/vendor/pimcore/pimcore/lib/Bootstrap.php
-
+$fileNotFound = true;
+if (file_exists(__DIR__ . '/../../../pimcore/pimcore/lib/Bootstrap.php')) {
+    require __DIR__ . '/../../../pimcore/pimcore/lib/Bootstrap.php';
+    $fileNotFound = false;
+}
+if (file_exists(__DIR__ . '/../../../../pimcore/lib/Pimcore/Bootstrap.php') && $fileNotFound) {
+    require __DIR__ . '/../../../../pimcore/lib/Pimcore/Bootstrap.php';
+    $fileNotFound = false;
+}
+if ($fileNotFound) {
+    echo "Could not bootstrap the CLI startup.";
+    return -1;
+}
 $kernel = \Pimcore\Bootstrap::startupCli();
 
 return $kernel;
