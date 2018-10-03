@@ -12,9 +12,22 @@
  * @license    http://www.pimcore.org/license     GPLv3 and PEL
  */
 
-require (__DIR__ . '/../../../../vendor/pimcore/pimcore/lib/Bootstrap.php');
+$startfile = __DIR__ . '/../../../../vendor/pimcore/pimcore/lib/Bootstrap.php';
+
+if(file_exists($startfile)) {   // pimcore 5.4.4
+    require($startfile);
+    $kernel = \Pimcore\Bootstrap::startupCli();
+
+    return $kernel;
+
+} else {   // pimcore 5.2 not even compatibru with 5.4
+
+    require(__DIR__ . '/../../../../pimcore/config/startup_cli.php');
+
+}
+
 // /data/projects/kh-pimcore/vendor/pimcore/pimcore/lib/Bootstrap.php
 
-$kernel = \Pimcore\Bootstrap::startupCli();
 
-return $kernel;
+
+
