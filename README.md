@@ -113,6 +113,7 @@ Deployment to server
 When deploying your project to a server, the deployment script would typically execute these commands after
 deploying the updated code:
 
+```
 ./vendor/youwe/pimcore5deployment/bin/clear-classes.sh
 ./vendor/youwe/pimcore5deployment/bin/import-field-collection.sh
 ./vendor/youwe/pimcore5deployment/bin/import-definition.sh
@@ -121,6 +122,7 @@ deploying the updated code:
 ./vendor/youwe/pimcore5deployment/bin/import-field-collection.sh
 ./vendor/youwe/pimcore5deployment/bin/import-staticdata.sh
 ./vendor/youwe/pimcore5deployment/bin/import-customsql.sh
+```
 
 NOTE: the import-field-collection is in twice, because the definition and field collection refer to each other. Its very
 important to run it twice and in this order!
